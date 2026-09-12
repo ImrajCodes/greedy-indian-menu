@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en-GB">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Greedy Indian &mdash; Menu | 75 Mare Street, Hackney</title>
+<meta name="description" content="Indian takeaway on Mare Street, Hackney. Free delivery within 2.5 miles, minimum order &pound;15. Open until 2am Friday &amp; Saturday.">
+<meta name="theme-color" content="#E9A526">
+<style>
+  :root{
+    --ink:#1A1218; --soft:#6A5C60; --chilli:#A8210F; --deep:#7A1608;
+    --mar:#E9A526; --paper:#FDFBF7; --rule:#E4DACB;
+    --display:"Superclarendon","Rockwell",Georgia,serif;
+    --name:-apple-system,BlinkMacSystemFont,"Avenir Next","Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);font-family:var(--name);
+    font-size:17px;line-height:1.45;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38'%3E%3Cg fill='none' stroke='%23A8760A' stroke-width='1' opacity='0.10'%3E%3Cpath d='M0 19 L19 0 L38 19 L19 38 Z'/%3E%3Ccircle cx='19' cy='19' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 16px 96px;}
+
+  header{
+    background:var(--mar);margin:0 -16px 18px;padding:22px 16px 18px;text-align:center;
+    border-bottom:3px solid var(--deep);
+  }
+  header svg{width:130px;height:130px;display:block;margin:0 auto;}
+  header .tag{
+    font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--deep);margin-top:6px;
+  }
+
+  .info{
+    background:#fff;border:1px solid var(--rule);border-radius:12px;
+    padding:14px 16px;margin-bottom:18px;font-size:15px;
+  }
+  .info div + div{margin-top:6px;}
+  .info b{color:var(--deep);}
+
+  .call{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--chilli);color:#fff;text-decoration:none;font-weight:700;
+    font-size:20px;letter-spacing:.02em;padding:15px;border-radius:12px;
+    margin-bottom:22px;box-shadow:0 2px 0 var(--deep);
+  }
+  .call:active{transform:translateY(1px);box-shadow:0 1px 0 var(--deep);}
+
+  details.sec{
+    background:#fff;border:1px solid var(--rule);border-radius:12px;
+    margin-bottom:10px;overflow:hidden;
+  }
+  summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;
+    justify-content:space-between;gap:12px;padding:14px 16px;
+    font-family:var(--display);font-size:19px;font-weight:700;color:var(--chilli);
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary i{
+    flex:none;width:11px;height:11px;border-right:2.5px solid var(--deep);
+    border-bottom:2.5px solid var(--deep);transform:rotate(45deg);
+    transition:transform .18s;margin-top:-4px;
+  }
+  details[open] summary i{transform:rotate(-135deg);margin-top:2px;}
+  .secbody{padding:0 16px 12px;border-top:1px solid var(--rule);}
+  .intro{font-style:italic;color:var(--soft);font-size:14px;margin:12px 0 8px;}
+  .strip{
+    background:#FCEFD5;border-left:4px solid var(--deep);border-radius:0 8px 8px 0;
+    padding:9px 12px;margin:12px 0 4px;font-size:14px;line-height:1.5;
+  }
+  .strip b{
+    display:block;font-size:12px;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--deep);margin-bottom:3px;
+  }
+  ul{list-style:none;margin:8px 0 0;padding:0;}
+  li{
+    display:flex;align-items:baseline;gap:10px;
+    padding:9px 0;border-bottom:1px dotted #D8CDBB;
+  }
+  li:last-child{border-bottom:none;}
+  .n{flex:1;}
+  .p{font-weight:700;color:var(--deep);white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+  footer{margin-top:26px;text-align:center;font-size:13px;color:var(--soft);line-height:1.6;}
+  footer b{color:var(--deep);}
+
+  .sticky{
+    position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(253,251,247,.96);border-top:1px solid var(--rule);
+    backdrop-filter:blur(8px);
+  }
+  .sticky a{
+    display:block;text-align:center;background:var(--chilli);color:#fff;
+    text-decoration:none;font-weight:700;font-size:18px;padding:14px;border-radius:12px;
+  }
+  @media (min-width:641px){ .sticky{display:none;} }
+</style>
+
+<div class="wrap">
+  <header>
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M14.0,68.0 A4.1,4.1 0 0,0 16.4,60.3 A5.2,5.2 0 0,0 23.6,53.1 A7.0,7.0 0 0,0 35.5,46.5 A9.1,9.1 0 0,0 52.2,40.4 A11.3,11.3 0 0,0 73.7,34.9 A13.6,13.6 0 0,0 100.0,30.0 A13.6,13.6 0 0,0 126.3,34.9 A11.3,11.3 0 0,0 147.8,40.4 A9.1,9.1 0 0,0 164.5,46.5 A7.0,7.0 0 0,0 176.4,53.1 A5.2,5.2 0 0,0 183.6,60.3 A4.1,4.1 0 0,0 186.0,68.0" fill="none" stroke="#A8210F" stroke-width="3" stroke-linecap="round"/>
+<g fill="#A8210F"><path transform="translate(83.00,82.00) scale(0.01292,-0.01292)" d="M376 562V0H205V562H5V708H576V562Z M1441.0 0V296H1165.0V0H994.0V708H1165.0V440H1441.0V708H1612.0V0Z M2098.0 0V708H2574.0V563H2263.0V430H2557.0V293H2263.0V146H2592.0V0Z"/></g>
+<g fill="#1B1208"><path transform="translate(20.90,134.00) scale(0.0250,-0.0250)" stroke="#1B1208" stroke-width="65" stroke-linejoin="round" stroke-linecap="round" d="M1040 -162Q1040 -348 860 -348Q780 -348 628 -272Q460 -188 346 -188Q101 -188 -116 -381Q-220 -474 -279 -600Q-283 -584 -283 -549Q-283 -429 -211 -310Q-145 -200 -40 -126Q78 -43 229 -43Q333 -43 410 -78Q451 -97 568 -176Q668 -244 721 -244Q853 -244 931 -135Q965 -88 965 -43Q965 36 917.0 89.5Q869 143 791 143Q719 143 554.0 70.5Q389 -2 317 -2Q264 -2 189 51Q33 162 33 258Q33 311 92 355Q145 396 201 401L203 412L154 481Q113 539 113 606Q113 836 489 836Q500 838 504 854V965H-14V1085H1014V965H659V797Q659 750 686 739Q703 739 729 770L767 816Q782 831 821 836Q884 836 941 764Q967 731 975 698L870 578Q868 624 851 662Q828 713 791 713Q777 713 758.0 700.0Q739 687 739 674Q739 659 752 638Q767 613 769 607Q776 584 776 549Q776 414 666 366Q593 334 436 334Q236 334 163 245Q134 210 135 188Q136 158 165.0 135.5Q194 113 225 113Q282 113 444 192Q635 285 752 287Q859 289 932 192Q991 115 1017 -4Q1040 -109 1040 -162ZM651 641Q651 762 522 762Q418 762 325 689Q225 611 225 510Q225 455 267.5 416.0Q310 377 365 377Q422 376 494 418Q558 455 600 504Q651 564 651 641Z M1998.0 965H987.0V1085H1998.0ZM1915.0 606Q1915.0 547 1844.0 473Q1784.0 410 1718.0 379L1568.0 549Q1636.0 555 1697.0 599Q1767.0 649 1767.0 713Q1767.0 747 1723.0 771Q1685.0 793 1648.0 793Q1571.0 793 1483.0 719Q1304.0 569 1304.0 387V-37L1112.0 63V803H1306.0V727Q1349.0 770 1484.0 817Q1550.0 840 1620.0 840Q1765.0 840 1866.0 729Q1915.0 675 1915.0 606Z M3033.0 965H2760.0V768Q2807.0 757 2828.0 741V623Q2709.0 664 2580.0 664Q2487.0 664 2400.0 633Q2284.0 592 2283.0 516Q2281.0 436 2510.0 436Q2515.0 436 2575.0 439L2635.0 442V350Q2499.0 346 2465.0 343Q2226.0 322 2226.0 205Q2226.0 140 2309.0 103Q2374.0 74 2449.0 74Q2774.0 74 2975.0 362V109Q2803.0 0 2568.0 0Q2311.0 0 2124.0 119Q2033.0 177 2033.0 252Q2033.0 325 2097.0 379Q2136.0 412 2226.0 455L2160.0 493Q2101.0 527 2101.0 584Q2101.0 708 2288.0 762Q2430.0 803 2607.0 803V965H1966.0V1085H3033.0Z M4073.0 965H3800.0V768Q3847.0 757 3868.0 741V623Q3749.0 664 3620.0 664Q3527.0 664 3440.0 633Q3324.0 592 3323.0 516Q3321.0 436 3550.0 436Q3555.0 436 3615.0 439L3675.0 442V350Q3539.0 346 3505.0 343Q3266.0 322 3266.0 205Q3266.0 140 3349.0 103Q3414.0 74 3489.0 74Q3814.0 74 4015.0 362V109Q3843.0 0 3608.0 0Q3351.0 0 3164.0 119Q3073.0 177 3073.0 252Q3073.0 325 3137.0 379Q3176.0 412 3266.0 455L3200.0 493Q3141.0 527 3141.0 584Q3141.0 708 3328.0 762Q3470.0 803 3647.0 803V965H3006.0V1085H4073.0Z M5211.0 965H5080.0L5078.0 -12L4896.0 66V209Q4734.0 0 4578.0 0Q4479.0 0 4362.0 83Q4262.0 154 4196.0 249Q4118.0 361 4119.0 467Q4120.0 564 4226.0 692Q4345.0 836 4513.0 836Q4620.0 836 4728.0 745Q4761.0 718 4896.0 571V965H4040.0V1085H4896.0Q4896.0 1292 4861.0 1409Q4809.0 1583 4629.0 1823Q4625.0 1825 4625.0 1839Q4625.0 1851 4631.0 1855H4822.0Q5080.0 1570 5080.0 1085H5211.0ZM4848.0 510Q4848.0 588 4763.0 644Q4687.0 694 4605.0 694Q4545.0 694 4455.0 638Q4259.0 516 4259.0 350Q4259.0 259 4308.0 192Q4362.0 117 4449.0 117Q4539.0 117 4641.0 199Q4712.0 256 4773.0 339Q4848.0 441 4848.0 510Z M6344.0 1085 6342.0 965H5498.0L5500.0 375Q5500.0 245 5545.0 186Q5596.0 121 5723.0 115Q5804.0 111 5885.0 168Q5957.0 218 6004.0 295Q6055.0 379 6055.0 459L6053.0 836L6262.0 764V-260Q6262.0 -447 6090.0 -565Q5931.0 -674 5717.0 -674Q5355.0 -674 5202.0 -477Q5140.0 -397 5140.0 -340Q5141.0 -215 5280.0 -130Q5403.0 -55 5535.0 -55L5662.0 -225Q5490.0 -237 5354.0 -298Q5265.0 -338 5265.0 -401Q5276.0 -492 5402.0 -562Q5477.0 -604 5596.0 -604Q5869.0 -604 6008.0 -427Q6074.0 -343 6074.0 -231V176Q6009.0 70 5727.0 70Q5490.0 70 5368.0 232Q5308.0 311 5308.0 412V965H5166.0V1085Z"/></g>
+<g fill="#A8210F"><path transform="translate(69.00,167.00) scale(0.01188,-0.01188)" d="M73 0V708H245V0Z M1141.0 0 856.0 463H853.0L857.0 0H691.0V708H886.0L1170.0 246H1173.0L1169.0 708H1335.0V0Z M2442.0 356Q2442.0 263 2407.5 195.5Q2373.0 128 2316.5 84.5Q2260.0 41 2189.0 20.5Q2118.0 0 2045.0 0H1781.0V708H2037.0Q2112.0 708 2185.0 690.5Q2258.0 673 2315.0 632.5Q2372.0 592 2407.0 524.0Q2442.0 456 2442.0 356ZM2264.0 356Q2264.0 416 2244.5 455.5Q2225.0 495 2192.5 518.5Q2160.0 542 2118.5 552.0Q2077.0 562 2033.0 562H1948.0V148H2029.0Q2075.0 148 2117.5 158.5Q2160.0 169 2192.5 193.0Q2225.0 217 2244.5 257.0Q2264.0 297 2264.0 356Z M2855.0 0V708H3027.0V0Z M3953.0 0 3898.0 139H3624.0L3572.0 0H3386.0L3683.0 708H3849.0L4143.0 0ZM3763.0 519 3673.0 276H3851.0Z M4952.0 0 4667.0 463H4664.0L4668.0 0H4502.0V708H4697.0L4981.0 246H4984.0L4980.0 708H5146.0V0Z"/></g></svg>
+    <div class="tag">Indian Takeaway &middot; Hackney</div>
+  </header>
+
+  <div class="info">
+    <div><b>75 Mare Street, London E8 4RG</b></div>
+    <div>Sun&ndash;Thu 5pm&ndash;11:30pm &middot; Fri &amp; Sat 5pm&ndash;<b>2am</b></div>
+    <div>Free delivery within 2.5 miles &mdash; min. order &pound;15</div>
+    <div><b>10% off</b> collection orders</div>
+  </div>
+
+  <a class="call" href="tel:+442039515992">Call to order &middot; 020 3951 5992</a>
+
+  <details class="sec" open>
+  <summary><span>Appetisers</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Poppadom</span><span class="p">£1.00</span></li>
+<li><span class="n">Chutneys, each</span><span class="p">£0.80</span></li>
+<li><span class="n">Cucumber Raita</span><span class="p">£2.95</span></li>
+<li><span class="n">Green Salad</span><span class="p">£2.90</span></li>
+<li><span class="n">Chips</span><span class="p">£2.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Starters</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Onion Bhaji</span><span class="p">£3.95</span></li>
+<li><span class="n">Veg Pakora</span><span class="p">£3.15</span></li>
+<li><span class="n">Samosa (2)</span><span class="p">£3.75</span></li>
+<li><span class="n">Seekh Lamb Kebab</span><span class="p">£4.95</span></li>
+<li><span class="n">Reshmi Kebab</span><span class="p">£5.25</span></li>
+<li><span class="n">Chicken Pakora</span><span class="p">£4.95</span></li>
+<li><span class="n">Tandoori Wings (6)</span><span class="p">£5.50</span></li>
+<li><span class="n">Mix Veg Starter</span><span class="p">£5.50</span></li>
+<li><span class="n">Tandoori Lamb Chops (2)</span><span class="p">£5.50</span></li>
+<li><span class="n">Mix Tandoori Starter</span><span class="p">£6.99</span></li>
+<li><span class="n">Tandoori King Prawn</span><span class="p">£5.50</span></li>
+<li><span class="n">King Prawn Butterfly</span><span class="p">£5.99</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Chaat &amp; Puree</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Aloo Chaat</span><span class="p">£3.95</span></li>
+<li><span class="n">Chicken Chaat</span><span class="p">£4.99</span></li>
+<li><span class="n">Lamb Tikka Chaat</span><span class="p">£5.99</span></li>
+<li><span class="n">Prawn Puree</span><span class="p">£5.49</span></li>
+<li><span class="n">King Prawn Puree</span><span class="p">£6.49</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>From the Tandoor</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Chicken Tikka</span><span class="p">£4.95</span></li>
+<li><span class="n">Paneer Tikka</span><span class="p">£4.99</span></li>
+<li><span class="n">Lamb Tikka</span><span class="p">£5.49</span></li>
+<li><span class="n">Tandoori Chicken</span><span class="p">£4.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Tandoori Grill</span><i></i></summary>
+  <div class="secbody"><p class="intro">Marinated in spiced yoghurt for 24 hours, grilled over charcoal in the clay oven.</p><div class="strip"><b>Shashlik</b>Chicken / Paneer £9.95 &middot; Lamb Tikka £10.95 &middot; King Prawn £12.95</div><ul><li><span class="n">Chicken Tikka</span><span class="p">£8.50</span></li>
+<li><span class="n">Lamb Tikka</span><span class="p">£8.95</span></li>
+<li><span class="n">Tandoori Chicken half/full</span><span class="p">£8.95/£14.95</span></li>
+<li><span class="n">Tandoori Lamb Chops (4)</span><span class="p">£11.95</span></li>
+<li><span class="n">King Prawn</span><span class="p">£11.95</span></li>
+<li><span class="n">Lamb Platter</span><span class="p">£12.95</span></li>
+<li><span class="n">Tandoori Mixed Grill</span><span class="p">£14.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Traditional Curry</span><i></i></summary>
+  <div class="secbody"><div class="strip"><b>Any dish, your choice of</b>Veg £7.95 &middot; Chicken £8.95 &middot; Lamb £9.50 &middot; Prawn £9.50 &middot; Chicken Tikka £9.95 &middot; Lamb Tikka £10.50 &middot; King Prawn £12.95 &middot; Tandoori K.Prawn £14.95</div><ul><li><span class="n">Korma</span></li>
+<li><span class="n">Curry</span></li>
+<li><span class="n">Bhuna</span></li>
+<li><span class="n">Dopiaza</span></li>
+<li><span class="n">Rogan</span></li>
+<li><span class="n">Korai</span></li>
+<li><span class="n">Dansak</span></li>
+<li><span class="n">Saag</span></li>
+<li><span class="n">Madras</span></li>
+<li><span class="n">Pathia</span></li>
+<li><span class="n">Vindaloo</span></li>
+<li><span class="n">Phal</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Balti</span><i></i></summary>
+  <div class="secbody"><div class="strip"><b>Your choice of</b>Veg £8.50 &middot; Chicken £9.50 &middot; Lamb / Prawn £9.95 &middot; K.Prawn £13.50 &middot; Ch.Tikka £10.50 &middot; Lamb Tikka £10.95</div><ul><li><span class="n">Balti Lamb Saag</span><span class="p">£10.50</span></li>
+<li><span class="n">Balti Chicken Tikka Saag</span><span class="p">£10.95</span></li>
+<li><span class="n">Balti Supreme</span><span class="p">£11.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Chef Specials</span><i></i></summary>
+  <div class="secbody"><p class="intro">Our kitchen&rsquo;s own recipes &mdash; the dishes regulars order by name.</p><div class="strip"><b>Tikka Masala / Jalfrezi / Korai</b>Chicken £10.50 &middot; Lamb £10.95 &middot; Paneer £10.95 &middot; Lamb Chop £13.50 &middot; K.Prawn £14.95</div><ul><li><span class="n">Butter Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">Tandoori Butter Chicken</span><span class="p">£10.95</span></li>
+<li><span class="n">Tikka Pasanda</span><span class="p">£10.50</span></li>
+<li><span class="n">Mughlai Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">Rezala Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">Jeera Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">Achari Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">Green Chilli Masala</span><span class="p">£10.95</span></li>
+<li><span class="n">Naga Chicken</span><span class="p">£10.50</span></li>
+<li><span class="n">King Prawn Zafrani</span><span class="p">£13.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Fish</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Fish Bhuna</span><span class="p">£10.50</span></li>
+<li><span class="n">Fish Jalfrezi</span><span class="p">£10.50</span></li>
+<li><span class="n">Shatkora Fish</span><span class="p">£10.95</span></li>
+<li><span class="n">Tandoori Tilapia</span><span class="p">£10.95</span></li>
+<li><span class="n">Salmon Tikka</span><span class="p">£12.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Biryani</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Vegetable</span><span class="p">£8.50</span></li>
+<li><span class="n">Chicken</span><span class="p">£9.50</span></li>
+<li><span class="n">Prawn</span><span class="p">£9.95</span></li>
+<li><span class="n">Lamb</span><span class="p">£9.95</span></li>
+<li><span class="n">Keema</span><span class="p">£9.95</span></li>
+<li><span class="n">Chicken Tikka</span><span class="p">£10.50</span></li>
+<li><span class="n">Lamb Tikka</span><span class="p">£10.95</span></li>
+<li><span class="n">Mixed</span><span class="p">£11.95</span></li>
+<li><span class="n">King Prawn</span><span class="p">£14.95</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Vegetable Dishes</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Bombay Aloo</span><span class="p">£4.95</span></li>
+<li><span class="n">Aloo Gobi</span><span class="p">£4.95</span></li>
+<li><span class="n">Tarka Dhal</span><span class="p">£4.95</span></li>
+<li><span class="n">Mixed Vegetable</span><span class="p">£4.95</span></li>
+<li><span class="n">Cauliflower Bhaji</span><span class="p">£4.95</span></li>
+<li><span class="n">Mushroom Bhaji</span><span class="p">£4.95</span></li>
+<li><span class="n">Bhindi Bhaji</span><span class="p">£4.95</span></li>
+<li><span class="n">Brinjal Bhaji</span><span class="p">£4.95</span></li>
+<li><span class="n">Saag Chana</span><span class="p">£4.95</span></li>
+<li><span class="n">Chana Masala</span><span class="p">£5.50</span></li>
+<li><span class="n">Paneer Bhaji</span><span class="p">£5.50</span></li>
+<li><span class="n">Saag Aloo</span><span class="p">£5.50</span></li>
+<li><span class="n">Saag Bhaji</span><span class="p">£5.50</span></li>
+<li><span class="n">Saag Paneer</span><span class="p">£5.50</span></li>
+<li><span class="n">Chana Paneer</span><span class="p">£5.50</span></li>
+<li><span class="n">Matar Paneer</span><span class="p">£5.50</span></li>
+<li><span class="n">Paneer Korai</span><span class="p">£5.50</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Rice</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Steamed</span><span class="p">£3.25</span></li>
+<li><span class="n">Pilau</span><span class="p">£3.50</span></li>
+<li><span class="n">Coconut Fried</span><span class="p">£4.50</span></li>
+<li><span class="n">Onion</span><span class="p">£4.50</span></li>
+<li><span class="n">Saag</span><span class="p">£4.50</span></li>
+<li><span class="n">Special Fried</span><span class="p">£4.50</span></li>
+<li><span class="n">Egg</span><span class="p">£4.50</span></li>
+<li><span class="n">Vegetable</span><span class="p">£4.50</span></li>
+<li><span class="n">Mushroom Fried</span><span class="p">£4.75</span></li>
+<li><span class="n">Lemon Fried</span><span class="p">£4.75</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Bread</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Chapati</span><span class="p">£2.25</span></li>
+<li><span class="n">Puree</span><span class="p">£2.25</span></li>
+<li><span class="n">Plain Naan</span><span class="p">£2.95</span></li>
+<li><span class="n">Paratha</span><span class="p">£3.25</span></li>
+<li><span class="n">Tandoori Roti</span><span class="p">£2.95</span></li>
+<li><span class="n">Stuffed Paratha</span><span class="p">£3.50</span></li>
+<li><span class="n">Egg Paratha</span><span class="p">£3.50</span></li>
+<li><span class="n">Keema Naan</span><span class="p">£3.65</span></li>
+<li><span class="n">Peshwari Naan</span><span class="p">£3.65</span></li>
+<li><span class="n">Garlic Naan</span><span class="p">£3.65</span></li>
+<li><span class="n">Cheese Naan</span><span class="p">£3.65</span></li>
+<li><span class="n">Chilli Cheese Naan</span><span class="p">£3.65</span></li>
+<li><span class="n">Kulcha Naan</span><span class="p">£3.65</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Drinks &amp; Desserts</span><i></i></summary>
+  <div class="secbody"><ul><li><span class="n">Water 330ml</span><span class="p">£1.25</span></li>
+<li><span class="n">Cans 330ml</span><span class="p">£1.60</span></li>
+<li><span class="n">Bottles 1.5L</span><span class="p">£3.50</span></li>
+<li><span class="n">Plain Lassi</span><span class="p">£3.25</span></li>
+<li><span class="n">Mango Lassi</span><span class="p">£3.50</span></li>
+<li><span class="n">Salt Lassi</span><span class="p">£3.50</span></li>
+<li><span class="n">Perrier Water</span><span class="p">£2.95</span></li>
+<li><span class="n">Red Bull</span><span class="p">£2.50</span></li>
+<li><span class="n">Cheesecake</span><span class="p">£4.99</span></li>
+<li><span class="n">Milk Cake</span><span class="p">£5.99</span></li></ul></div>
+</details>
+<details class="sec">
+  <summary><span>Set Meals</span><i></i></summary>
+  <div class="secbody"><p class="intro">Poppadom, curry, rice, naan, salad &amp; a drink</p><ul><li><span class="n">For One &mdash; Chicken</span><span class="p">£19.95</span></li>
+<li><span class="n">For One &mdash; Lamb</span><span class="p">£20.95</span></li>
+<li><span class="n">Feast for Two &mdash; Chicken</span><span class="p">£39.95</span></li>
+<li><span class="n">Feast for Two &mdash; Lamb</span><span class="p">£41.95</span></li></ul></div>
+</details>
+
+  <footer>
+    <p>All prices include VAT.<br>
+    Please tell us about any allergies before ordering &mdash; all dishes are prepared in the same kitchen.</p>
+    <p><b>The Greedy Indian</b> &middot; 75 Mare Street, London E8 4RG</p>
+  </footer>
+</div>
+
+<div class="sticky"><a href="tel:+442039515992">Call 020 3951 5992</a></div>
+</html>
